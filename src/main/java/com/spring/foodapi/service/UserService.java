@@ -6,4 +6,6 @@ import com.spring.foodapi.io.UserRequest;
 public interface UserService {
 
     UserReponse registerUser(UserRequest userRequest);
+
+    String findByUserId();
 }
