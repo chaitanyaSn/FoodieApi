@@ -20,6 +20,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserReponse registerUser(UserRequest userRequest) {
+        if(userRepository.existsByEmail(userRequest.getEmail())){
+            throw new RuntimeException("Email already exists");
+        }
         UserEntity newUser= convertToEntity(userRequest);
         newUser=userRepository.save(newUser);
         return convertToResponse(newUser);
